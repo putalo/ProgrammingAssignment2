@@ -19,6 +19,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## second, we get the function
 ## third, we set the inverse
 ## finally, we get the inverse
+## I refer to the final output of this function as matrix x's storage info (so we can retrieve information later)
 ## then we can use this to cacheSolve()
 
 
@@ -34,11 +35,11 @@ cacheSolve <- function(x, ...) {
   return(inv)
 }
 
-## x: whatever we get from the makeCacheMatrix(). I'd like to call it "x's info"
+## x: whatever we get from the makeCacheMatrix(). Or we try to solve using "matrix x's storage info"
 ## if we already have the inverse, we then
-## obtain from the cache and skips the computation. 
-## if not then proceed in obtaining the inverse matrix
-## and settting the value of the inverse in the cache  (setinv function)
+## obtain from the "storage" (cache) and skips the computation. 
+## if not then proceed to obtain the inverse matrix
+## and then set the value obtained of the inverse in the cache  (setinv function)
 ## return(...) gives us the inverse of the original matrix x
 
 
@@ -53,5 +54,5 @@ x_inverse
 x_inverse_inverse<-makeCacheMatrix(x_inverse)
 cacheSolve(x_inverse_inverse)
 
-## some rationale: this proccess can be very time-efficient if we try to obtain 
+## rationale: this proccess can be very time-efficient if we try to obtain 
 ## inverse of a very big matrix
